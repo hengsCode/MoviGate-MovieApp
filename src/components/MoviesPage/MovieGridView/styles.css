@@ -1,0 +1,60 @@
+.movie-grid-container {
+  position: relative;
+  left: 400px;
+  top: 100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 333px);
+  column-gap: 190px;
+  row-gap: 100px;
+  margin: 50px 0 0 120px;
+}
+.movie-grid-item-container {
+  display: flex;
+  flex-direction: column;
+}
+.movie-grid-item {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  box-shadow: 2px 2px 8px black;
+  overflow: hidden;
+  cursor: pointer;
+}
+.movie-grid-poster {
+  position: absolute;
+  object-fit: cover;
+  height: 500px;
+  width: 333px;
+}
+.movie-grid-overview-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  transform: translateY(100%);
+  opacity: 0.3;
+  transition: 0.8s ease-in-out;
+}
+.movie-grid-overview {
+  padding: 20px;
+  width: 90%;
+  font-size: 20px;
+  overflow: auto;
+}
+.movie-grid-item:hover .movie-grid-overview-container {
+  transform: translateY(0);
+  opacity: 1;
+  transition: 0.8s ease-in-out;
+}
+.movie-grid-title {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+.movie-grid-star {
+  width: 12px;
+}

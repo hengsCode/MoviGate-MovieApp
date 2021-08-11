@@ -1,0 +1,44 @@
+.movie-view-container {
+  display: flex;
+  width: calc(100% - 400px);
+  height: 100%;
+}
+.movie-view-content {
+  position: relative;
+  left: 400px;
+  top: 100px;
+  width: 100%;
+  height: 100%;
+}
+.movie-view-main {
+  display: flex;
+  flex-direction: row;
+  padding: 100px;
+}
+
+.movie-view-poster {
+  object-fit: cover;
+  height: 800px;
+}
+.movie-view-information {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+.movie-view-title {
+  font-size: 100px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 10px;
+  color: white;
+}
+.movie-view-info-header {
+  font-size: 35px;
+  color: rgba(219, 0, 0, 1);
+}
+.movie-view-info-content {
+  font-size: 25px;
+  font-weight: lighter;
+  color: white;
+}
