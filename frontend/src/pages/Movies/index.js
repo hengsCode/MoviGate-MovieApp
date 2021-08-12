@@ -1,16 +1,20 @@
 import { React, useEffect, useState } from "react";
 import { Header, Footer, Drawer } from "../../components/HomePage";
 import { MovieGridView } from "../../components/MoviesPage";
-import movieDB from "../../assets/movie-api/moviedata.json";
 import "./styles.css";
 
 const Movies = (props) => {
-  const { filter } = props.location.state;
+  const { filter, movieObj } = props.location.state;
+  console.log(movieObj);
   const [movieList, setMovieList] = useState([]);
 
   useEffect(() => {
     if (filter === "goat") {
-      setMovieList(movieDB);
+      fetch("/goats")
+        .then((response) => response.json())
+        .then(({ results }) => {
+          setMovieList(results);
+        });
     }
   }, []);
 

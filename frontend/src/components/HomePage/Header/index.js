@@ -1,3 +1,4 @@
+import { param } from "jquery";
 import { React, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./styles.css";
@@ -20,7 +21,15 @@ const Header = () => {
     setSearch(e.target.value);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    fetch(`/search/${search}`).then((response) =>
+      response
+        .json()
+        .then(({ results }) =>
+          history.push({ pathname: "/goats", state: { movieObj: results } })
+        )
+    );
+  };
 
   const handleClick = () => {
     history.push("/");
