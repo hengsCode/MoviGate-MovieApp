@@ -1,0 +1,5 @@
+.home-overview-container {
+  margin: 150px 0 150px 150px;
+  transition: 0.5s ease-in-out;
+  width: fit-content;
+}
