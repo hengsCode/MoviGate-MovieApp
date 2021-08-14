@@ -1,31 +1,44 @@
+import { CircularProgress } from "@material-ui/core";
 import { React, useEffect, useState } from "react";
-import { Header, Footer, Drawer } from "../../components/HomePage";
 import { MovieGridView } from "../../components/MoviesPage";
 import "./styles.css";
 
 const Movies = (props) => {
-  const { filter, movieObj } = props.location.state;
-  console.log(movieObj);
+  const { filter } = props.history.location.state;
   const [movieList, setMovieList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (filter === "goat") {
-      fetch("/goats")
-        .then((response) => response.json())
-        .then(({ results }) => {
-          setMovieList(results);
-        });
-    }
-  }, []);
+  let type = filter;
+  if (type === "comingsoon") {
+    type = "coming soon";
+  } else if (type.includes("search/")) {
+    type = `results for "${type.substring(7)}":`;
+  }
+
+  useEffect(async () => {
+    setLoading(true);
+    await fetch(`/${filter}`)
+      .then((response) => response.json())
+      .then(({ results }) => {
+        setMovieList(results);
+      });
+    let id = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => {
+      clearTimeout(id);
+    };
+  }, [filter]);
 
   return (
     <>
-      <Header />
-      <Drawer />
-      <div class="movie-page-container">
-        <MovieGridView movieList={movieList} />
+      <div className="movie-page-container">
+        {loading ? (
+          <CircularProgress class="progress-icon" />
+        ) : (
+          <MovieGridView movieList={movieList} type={type} />
+        )}
       </div>
-      <Footer />
     </>
   );
 };
