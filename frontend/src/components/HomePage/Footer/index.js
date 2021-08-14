@@ -2,7 +2,12 @@ import { React } from "react";
 import "./styles.css";
 
 const Footer = () => {
-  return <div></div>;
+  return (
+    <div>
+      HELLELEOE
+      <div></div>
+    </div>
+  );
 };
 
 export default Footer;

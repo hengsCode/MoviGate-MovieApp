@@ -1,44 +1,45 @@
 import { React } from "react";
+import { Header, Drawer } from "../../HomePage";
+import { genres } from "../../../assets/movie-api/genres.json";
 import "./styles.css";
 
 const MovieView = (props) => {
   const { movieObj } = props.history.location.state;
-
-  const handleClick = async () => {
-    await fetch(`/trailer/${movieObj.id}`)
-      .then((response) => response.json())
-      .then(({ trailer }) => window.open(trailer));
-  };
-
   return (
     <>
-      <div className="movie-view-container">
-        <div className="movie-view-content">
-          <div className="movie-view-main">
-            <div className="movie-view-poster-container">
-              <img
-                className="movie-view-poster"
-                src={movieObj.poster_path}
-                alt=""
-              />
-              <div className="movie-view-trailer-label" onClick={handleClick}>
-                View Trailer
-              </div>
-            </div>
-            <div className="movie-view-information">
-              <div className="movie-view-title">{movieObj.title}</div>
-              <div className="movie-view-info-header">Score:</div>
-              <div className="movie-view-info-content">
+      <Header />
+      <Drawer />
+      <div class="movie-view-container">
+        <div class="movie-view-content">
+          <div class="movie-view-main">
+            <img class="movie-view-poster" src={movieObj.poster_path} alt="" />
+            <div class="movie-view-information">
+              <text class="movie-view-title">{movieObj.title}</text>
+              <text class="movie-view-info-header">Score:</text>
+              <text class="movie-view-info-content">
                 {movieObj.vote_average} / 10
-              </div>
-              <div className="movie-view-info-header">Genres:</div>
+              </text>
+              <text class="movie-view-info-header">Genres:</text>
               <div>
-                {movieObj.genre_list.map((genre, index) => {
-                  return <div className="movie-view-info-content">{genre}</div>;
+                {movieObj.genre_ids.map((genreID, index) => {
+                  let genreObj = genres.find((e) => e.id === genreID);
+                  if (index === movieObj.genre_ids.length - 1) {
+                    return (
+                      <text class="movie-view-info-content">
+                        {genreObj.name}
+                      </text>
+                    );
+                  } else {
+                    return (
+                      <text class="movie-view-info-content">
+                        {genreObj.name},{" "}
+                      </text>
+                    );
+                  }
                 })}
               </div>
-              <div className="movie-view-info-header">Summary:</div>
-              <div className="movie-view-info-content">{movieObj.overview}</div>
+              <text class="movie-view-info-header">Summary:</text>
+              <text class="movie-view-info-content">{movieObj.overview}</text>
             </div>
           </div>
         </div>

@@ -15,27 +15,7 @@
   flex-direction: row;
   padding: 100px;
 }
-.movie-view-poster-container {
-  position: relative;
-}
-.movie-view-trailer-label {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 30px;
-  color: white;
-  opacity: 0;
-  transition: 0.5s ease-in-out;
-  display: flex;
-  place-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.movie-view-trailer-label:hover {
-  background: rgb(0, 0, 0, 0.5);
-  opacity: 1;
-}
+
 .movie-view-poster {
   object-fit: cover;
   height: 800px;
@@ -55,11 +35,10 @@
 }
 .movie-view-info-header {
   font-size: 35px;
-  color: rgb(216, 0, 0);
-  margin-top: 40px;
+  color: rgba(219, 0, 0, 1);
 }
 .movie-view-info-content {
   font-size: 25px;
-  font-weight: 200;
+  font-weight: lighter;
   color: white;
 }
