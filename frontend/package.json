@@ -26,7 +26,8 @@
     "test": "react-scripts test",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:prod": "node src/index.js"
   },
   "eslintConfig": {
     "extends": [
@@ -47,5 +48,5 @@
     ]
   },
   "proxy": "http://localhost:5000",
-  "homepage": "https://movie-app.com"
+  "homepage": "https://hengscode.github.io/movie-app/"
 }
