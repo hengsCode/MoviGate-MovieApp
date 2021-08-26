@@ -1,5 +1,4 @@
 # MoviGate-MovieApp (ReactJS) - Currently in Development #
-# (Progress Below) #
 
 ### Install dependencies using: `yarn install` or `npm install` ###
 ### Run app using: `yarn start` or `npm start` ###
